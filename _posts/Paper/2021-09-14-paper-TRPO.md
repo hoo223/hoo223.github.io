@@ -1,0 +1,163 @@
+---
+title:  "Trust Region Policy Optimization"
+excerpt: "Trust Region Policy Optimization 논문 정리"
+
+categories:
+  - Paper
+tags:
+  - [Paper, Research, RL, Policy-based, In-progress]
+
+toc: true
+toc_sticky: true
+ 
+date: 2021-09-15
+last_modified_at: 2021-09-15
+---
+
+PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합니다.  
+항상 두 논문에 대해 좀 더 깊게 이해해보고 싶었는데 이번 기회에 한번 정리해보려고 합니다.    
+팡요랩 리뷰 영상이 이해하는데 많은 도움이 되었습니다.   
+다음의 reference를 참고하여 작성하였습니다.
+
+[[쉽게읽는 강화학습 논문 5화] TRPO 논문 리뷰](https://www.youtube.com/watch?v=XBO4oPChMfI&t=3268s)    
+[TRPO 논문](https://arxiv.org/abs/1502.05477)
+
+# 1. Motivation & Contribution
+
+---
+---
+
+# 2. Preliminaries
+## MDP
+![1](https://user-images.githubusercontent.com/17296297/133378285-c8df6fc8-4087-4455-9ab7-d60c39a4eb42.png)
+
+---
+
+## Stochastic policy
+![2](https://user-images.githubusercontent.com/17296297/133378284-849f68f6-70d8-489a-9c50-3758da605a22.png)
+
+---
+
+## Expected (cumulative) discounted reward
+![3](https://user-images.githubusercontent.com/17296297/133378282-f0b327ea-6223-43dd-8b2b-6de486e1910c.png)
+
+---
+
+## Action value, state value, advantage function
+![4](https://user-images.githubusercontent.com/17296297/133378280-4a8e3437-8c49-4e07-aebc-7c5cb56748a2.png)
+
+---
+
+## Useful identity from "Kakade & Langford (2002)"
+![5](https://user-images.githubusercontent.com/17296297/133378277-26b76044-f0ce-4c5b-a9cf-a10cc2cf3a3d.png)
+* 한 policy π의 expected return과 다른 policy π ̃의 expected return 간의 관계를 표현한 식
+* the expected return of another policy π ̃  in terms of the advantage over π, accumulated over timesteps
+* 증명 -> Appendix A
+* 의미
+  * 모든 state s에서 nonnegative expected advantage를 갖는 모든 policy update π→π ̃  는 policy performance η의 증가 또는 상수로 남아있는 것을 보장함 (expected advantage가 모두 0인 경우) = policy 성능이 떨어지지 않는 것을 보장    
+  * Deterministic policy π ̃(s)=argmax_a A_π (s,a)를 사용하는 policy iteration에 의해 수행되는 update의 결과와 동일
+    * 만약 positive advantage value와 nonzero state visitation probability를 갖는 state-action pair가 적어도 하나 존재한다면 policy가 향상됨
+    * 그렇지 않을 경우 optimal policy로 수렴
+* 문제점
+  * 일반적으로 approximate setting에서는 추정/근사 error에 의해 어떤 state s에서 expected advantage가 음수인 경우들이 존재    
+  ![6](https://user-images.githubusercontent.com/17296297/133378275-5bf9667b-4fda-4f16-904f-b3fde85c234c.png)
+  * ρ_π ̃  (s)에서 π ̃에 대한 의존성이 존재해 직접적인 최적화를 어렵게 만듦
+* Solution
+  * Local approximation to η    
+    ![7](https://user-images.githubusercontent.com/17296297/133378274-264562cf-be65-4173-a16e-03538a644e9d.png)
+    * policy 변화에 따른 state visitation density의 변화를 무시 -> 이래도 되는가? 
+    * 가능함. θ로 미분 가능한 parameterized policy π_θ 를 고려할 경우 -> θ_0 (=〖 θ〗_old)에서 first order까지 일치 (see Kakade & Langford (2002))    
+    ![8](https://user-images.githubusercontent.com/17296297/133378272-c25da6c6-cb80-4d5a-86da-45d4105423e7.png)
+      * 의미 : L_(〖π_θ〗_old ) 를 향상시키는 충분히 작은 step π_(θ_0 )→π ̃는 η 또한 향상시킴    
+      "L_(〖π_θ〗_old ) 를 증가 시키는 것이 곧 η 를 증가시키는 것과 같다!"
+      * 문제점 : step 크기가 얼마나 작아야 하는지는 모름
+
+---
+
+## Conservative policy iteration
+* 위 문제를 다루기 위해 Kakade & Langford (2002)가 제안한 policy updating scheme    
+  ![9](https://user-images.githubusercontent.com/17296297/133378268-3f09ed77-bdd4-4dfa-be3c-400cf919eacd.png)
+  * π_old  : current policy
+  * π^′=argmax_(π^′ ) L_(〖π_θ〗_old ) (π^′
+* η의 improvement에 대한 명시적인 lower bounds를 제공   
+  ![10](https://user-images.githubusercontent.com/17296297/133378266-51dc2e26-35fc-411a-bb84-f6c947ab5ea7.png)
+* 의미
+  * Right-hand side를 향상시키는 policy update가 true performance 의 향상을 보장함
+* 문제점
+  * 식 (5)로 생성된 mixture policy들에만 적용 가능 -> 실용적이지 못함   
+  => 모든 general stochastic policy classes에 적용 가능한 실용적인 policy update scheme이 필요
+
+---
+---
+
+# 3. Monotonic Improvement Guarantee for General Stochastic Policies
+* α를 π와 π ̃간의 distance measure로 대체하고 상수 를 적절하게 변경
+  * Distance measure = total variation divergence for discrete probability distribution p, q  
+  ![11](https://user-images.githubusercontent.com/17296297/133378263-024a308d-cb4a-4ee9-ba11-2547c0c81319.png)
+  ![12](https://user-images.githubusercontent.com/17296297/133378260-06dbacd6-c7c2-4b68-859b-32fcf65aebd2.png)
+    * 모든 state에 대한 최대값 
+* Theorem 1 (proved in the appendix)
+![13](https://user-images.githubusercontent.com/17296297/133378259-1f2b38a1-a7a9-4c1a-a885-ca024b7a958d.png)
+
+* Relationship between the total variation divergence and the KL divergence (Pollard (2000), Ch. 3)   
+![14](https://user-images.githubusercontent.com/17296297/133378258-97b2cbfb-1c6c-499c-8995-14f711cd4a1a.png)    
+![15](https://user-images.githubusercontent.com/17296297/133378256-352f5ef7-c579-4205-99a7-36b70e73bac8.png)
+
+* Modified bound with KL divergence   
+![16](https://user-images.githubusercontent.com/17296297/133378254-dbe09313-53b6-4e90-b6ef-34ad4e46eb31.png)
+
+---
+
+## 지금까지의 흐름
+![17](https://user-images.githubusercontent.com/17296297/133378252-68a94bd0-9d74-48cf-bf90-02010c9feac7.png)    
+출처: [[쉽게읽는 강화학습 논문 5화] TRPO 논문 리뷰](https://www.youtube.com/watch?v=XBO4oPChMfI&t=3268s)
+
+---
+
+## Algorithm 1: Policy iteration algorithm guaranteeing non- decreasing expected return η
+![18](https://user-images.githubusercontent.com/17296297/133378251-64ff33ee-201c-415e-ae75-9e4a99f35efa.png)    
+* Equation (9)의 policy improvement bound 기반의 policy iteration scheme
+* 여기서는 advantage values A_π 의 정확한 계산를 가정
+* policy들의 monotonically improving sequence의 생성을 보장   
+  ![19](https://user-images.githubusercontent.com/17296297/133378250-151d4f90-d312-47fe-87fc-0cb0553addf1.png)
+  * Proof   
+  ![20](https://user-images.githubusercontent.com/17296297/133378249-854668a3-4f66-432f-a24f-68fdf0d35fe0.png)
+  * 매 iteration에서 M_i 를 최대화함으로써, true objective η의 non-decreasing을 보장
+* Minorization-maximization (MM) algorithm의 한 종류
+  * MM algorithm의 용어에서,    
+    M_i  : surrogate function that minorizes η with equality at π_i
+
+
+
+---
+
+# 4. Optimization of Parameterized Policies
+* 앞에서는 모든 state에서 policy를 평가할 수 있다는 가정하에 π의 parameterization과 독립적인 policy optimization 문제를 고려함
+* Parameterized policies π_θ (a|s) with parameter vector θ 고려   
+  ![21](https://user-images.githubusercontent.com/17296297/133378248-2895607a-a985-487b-a075-5d3af025c1a7.png)    
+  ![22](https://user-images.githubusercontent.com/17296297/133378246-88ecbf01-77b3-48e3-91db-bf08d0e2a2c3.png)    
+  θ_old  : previous policy parameters that we want to improve upon    
+  ![23](https://user-images.githubusercontent.com/17296297/133378243-a0a3b1c2-744b-4862-8a1e-5bfd0f5233a4.png)    
+ 	아래의 maximization을 수행함으로써 true objective η의 향상을 보장   
+  ![24](https://user-images.githubusercontent.com/17296297/133378242-cc1d861c-0bb4-4f99-9ce9-da64ba4378b4.png)
+* 문제점
+  * 위 이론에서 추천하는 penalty coefficient C를 사용하면 step size가 매우 작아질 수 있음
+* Robust하게 좀더 큰 step을 취하기 위한 이 논문의 해결방안
+  * Constraint 형태로 변환 => trust region constraint
+  * 새로운 policy와 기존 policy 간의 KL divergence에 대한 constraint를 사용   
+    ![25](https://user-images.githubusercontent.com/17296297/133378240-a41f56df-cfa6-4111-a1c4-ca4bd031328a.png)
+  * 이 때의 문제점 -> state space의 모든 point에 대하여 고려해야 함
+  * 해결방안 -> max값 대신 평균 값을 사용하자 => average KL divergence    
+    ![26](https://user-images.githubusercontent.com/17296297/133378239-7c03e950-8a10-417b-b955-f9e00bd33374.png)    
+    ![27](https://user-images.githubusercontent.com/17296297/133378233-dc2e331a-be52-434c-821e-d5cc1b15d8e5.png)
+  * 실험을 통해 maximum KL divergence와 비슷한 성능임을 보임
+
+# 5. Sample-Based Estimation of the Objective and Constraint
+* Monte Carlo simulation을 사용해 objective와 constraint function을 근사    
+...
+
+
+
+
+
+
