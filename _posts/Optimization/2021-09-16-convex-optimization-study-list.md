@@ -7,7 +7,7 @@ categories:
 tags:
   - [Optimization, Convex]
 
-toc: true
+toc: false
 toc_sticky: true
 use_math: true
  
