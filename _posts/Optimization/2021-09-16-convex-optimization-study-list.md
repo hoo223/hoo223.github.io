@@ -40,7 +40,7 @@ last_modified_at: 2021-09-16
     * Portpolio optimization
     * Device sizing in electonic circuits
     * Data fitting
-
+---
 ## 1-2 Convex optimization problem
 ### Convex optimization problem
 * Convex optimization problem = optimization problem의 한 종류
@@ -56,16 +56,16 @@ last_modified_at: 2021-09-16
 * Convex 함수의 local minimum은 항상 global minimum
     * 증명
 ### Convex combination
-
+---
 ## 1-3 Goals and Topics
 ### Goals
 ### Topics
 ### Algorithms
+---
 ## 1-4 Brief history of convex optimization
 ### Theory
 ### Algorithms
 ### Applications
-
 ---
 # 2. Convex Sets
 ## Motivation
@@ -78,8 +78,13 @@ Convex set -> convex optimization의 근간을 이루는 개념
         * Convex function의 주요 성질들이 convex set에 의해 결정
     * 풀고자 하는 문제가 convex function으로 정의된 것인지 판단할 때        
         => 함수의 epigraph가 convex set인지 확인하면 됨
-
+---
 ## Contents
 * convex set의 정의와 예제, 주요 속성, convexity를 유지하는 연산
-
+---
 ## 2-1 Affine and Convex Sets
+## 2-2 Some important examples
+## 2-3 Operations that preserve convexity
+## 2-4 Generalized inequalities
+## 2-5 Separating and supporting hyperplanes
+## 2-6 Dual cones and generalized inequalities
