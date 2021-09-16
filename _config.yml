@@ -291,7 +291,7 @@ defaults:
       type: posts
     values:
       show_data: true
-      layout: archive
+      layout: single
       author_profile: true
       read_time: false
       comments: true
