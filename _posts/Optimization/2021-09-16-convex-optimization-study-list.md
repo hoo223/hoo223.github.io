@@ -83,8 +83,25 @@ Convex set -> convex optimization의 근간을 이루는 개념
 * convex set의 정의와 예제, 주요 속성, convexity를 유지하는 연산
 ---
 ## 2-1 Affine and Convex Sets
+### 2-1-1 Line, line segment, ray
+### 2-1-2 Afiine set
+* Affine set
+* Affine combination
+* Affine hull
+* Affine set과 subspace의 관계
+### 2-1-3 Convex set
+### 2-1-4 Cone
+---
 ## 2-2 Some important examples
+### 2-2-1 Convex set examples
+### 2-2-2 Convex cone examples
+---
 ## 2-3 Operations that preserve convexity
+---
 ## 2-4 Generalized inequalities
+---
 ## 2-5 Separating and supporting hyperplanes
+---
 ## 2-6 Dual cones and generalized inequalities
+### 2-6-1 Dual cones
+### 2-6-2 Dual generalized inequalities
