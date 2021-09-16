@@ -156,7 +156,7 @@ Convex set -> convex optimization의 근간을 이루는 개념
         * 두 점의 선형 결합이 집합에 포함되지 않는 경우가 존재
 
 * Conic combination     
-    > The point $$ is called a conic combination of $x_1,\cdots,x_k.$
+    > The point $\sum_{i=1}^{k}\theta_i x_i$ is called a conic combination of $x_1,\cdots, x_k.$
     * 선형 결합 (linear combination) 할 때 모든 계수가 0 이상인 경우        
     = **Conic combination** or **nonnegative linear combination**
 * Conic hull
