@@ -48,15 +48,20 @@ last_modified_at: 2021-09-16
 * Convex optimization problem = optimization problem의 한 종류
     * objective function $f$, inequality constraint function $g_i$ -> convex
     * equality constraint function $h_i$ -> affine function
+
 ### Convex sets
 * Definition
+
 ### Convex functions
 * Definition
+
 ### Relation between a convex set and a convex function
 * Epigraph
+
 ### Nice property of convex optimization problems
 * Convex 함수의 local minimum은 항상 global minimum
     * 증명
+    
 ### Convex combination
 
 ---
