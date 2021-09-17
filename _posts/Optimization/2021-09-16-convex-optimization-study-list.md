@@ -15,7 +15,11 @@ date: 2021-09-16
 last_modified_at: 2021-09-16
 ---
 # 0. Reference
-[모두를 위한 컨벡스 최적화](https://convex-optimization-for-all.github.io/)
+[모두를 위한 컨벡스 최적화](https://convex-optimization-for-all.github.io/)     
+[CMU 강의](http://www.stat.cmu.edu/~ryantibs/convexopt-F16/#miscellaneous)      
+[Stanford 강의](https://web.stanford.edu/~boyd/cvxbook/)        
+[UBC 강의 (CPSC406)](https://friedlander.io/19T2-406/notes/Constrained_optimization/)
+
 
 # 1. Introduction
 
@@ -124,11 +128,6 @@ Convex set -> convex optimization의 근간을 이루는 개념
 
     그림의 6가지 예시 모두 집합 C에서 한 점 x (= 벡터)를 선텍하고 $\theta$ 배를 한 점 $\theta x$ 도 집합 C에 포함되므로 위 정의를 만족한다.
 
-
-
-
-
-
 * Convex cone
     > A set C is a **convex cone** if it is convex and a cone, i.e.,
     > $$
@@ -175,6 +174,13 @@ Convex set의 주요 예제들
 ### 2-2-1 Convex set examples
 
 ### 2-2-2 Convex cone examples
+* Norm cone
+    > $$C = \{(x, t) : \|x\| \le t\} \subseteq R^{n+1}, \; \text{for a norm} \; \|·\|, \; t \in \mathbb R $$
+    * 
+* Normal cone
+    * Noraml cone은 tangent cone으로부터 정의될 수도 있음
+    * Normal cone, tangent cone 예시
+* Positive semidefinite cone
 
 ---
 
