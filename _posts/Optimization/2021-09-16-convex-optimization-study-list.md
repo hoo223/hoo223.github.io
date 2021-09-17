@@ -5,7 +5,7 @@ excerpt: "'모두를 위한 컨벡스 최적화' 공부 리스트"
 categories:
   - Optimization
 tags:
-  - [Optimization, Convex]
+  - [Optimization, Convex, In-progress]
 
 toc: false
 toc_sticky: true
