@@ -1,0 +1,23 @@
+---
+title:  "LaTex 문법 관련 Reference"
+excerpt: ""
+
+categories:
+  - Blog
+tags:
+  - [Latex]
+
+toc: false
+toc_sticky: true
+use_math: true
+ 
+date: 2021-09-17
+last_modified_at: 2021-09-17
+---
+
+# [위키백과:TeX 문법](https://ko.wikipedia.org/wiki/%EC%9C%84%ED%82%A4%EB%B0%B1%EA%B3%BC:TeX_%EB%AC%B8%EB%B2%95)
+
+### [칠판체 로마자](https://ko.wikipedia.org/wiki/%EC%9C%84%ED%82%A4%EB%B0%B1%EA%B3%BC:TeX_%EB%AC%B8%EB%B2%95#:~:text=beth%20%5Cgimel%20%5Cdaleth%20%5C!%7D-,%EC%B9%A0%ED%8C%90%EC%B2%B4%20%EB%A1%9C%EB%A7%88%EC%9E%90,-%5Cmathbb%7BABCDEFGHI%7D)
+> \mathbb{ABCDEFGHI} $\rightarrow \mathbb{ABCDEFGHI}$     
+> \mathbb{JKLMNOPQR} $\rightarrow \mathbb{JKLMNOPQR}$     
+> \mathbb{STUVWXYZ} $\rightarrow \mathbb{STUVWXYZ}$     
