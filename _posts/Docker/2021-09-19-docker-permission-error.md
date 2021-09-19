@@ -18,12 +18,12 @@ last_modified_at: 2021-09-19
 # Error Description 
 docker 명령어 실행시 아래와 같은 오류가 발생할 경우 
 
-> Error loading config file: /home/$USER/.docker/config.json: open /home/$USER/.docker/config.json: permission denied
+> Error loading config file: /home/\\$USER/.docker/config.json: open /home/\\$USER/.docker/config.json: permission denied
 
 # Solution
 ~/.docker 폴더에 있는 파일들의 소유주를 $USER로 변경
 
-> sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+> sudo chown "\\$USER":"\\$USER" /home/"$USER"/.docker -R
 
 ---
 
