@@ -9,7 +9,7 @@ tags:
 
 toc: false
 toc_sticky: true
-use_math: true
+use_math: false
  
 date: 2021-09-19
 last_modified_at: 2021-09-19
@@ -35,10 +35,10 @@ last_modified_at: 2021-09-19
 
 ---
 
- # Reference
+# Reference
 
- https://git-scm.com/docs/git-credential-cache      
+https://git-scm.com/docs/git-credential-cache      
 
- [Git 아이디 패스워드 입력 안하는 방법](https://webisfree.com/2017-05-19/git-%EC%95%84%EC%9D%B4%EB%94%94-%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C-%EC%9E%85%EB%A0%A5-%EC%95%88%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)        
+[Git 아이디 패스워드 입력 안하는 방법](https://webisfree.com/2017-05-19/git-%EC%95%84%EC%9D%B4%EB%94%94-%ED%8C%A8%EC%8A%A4%EC%9B%8C%EB%93%9C-%EC%9E%85%EB%A0%A5-%EC%95%88%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95)        
 
  [github 토큰 생성](https://velog.io/@ruddms936/github-%ED%86%A0%ED%81%B0-%EC%83%9D%EC%84%B1)
