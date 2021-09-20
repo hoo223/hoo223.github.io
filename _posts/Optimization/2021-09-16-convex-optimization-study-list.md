@@ -163,7 +163,7 @@ Convex set -> convex optimization의 근간을 이루는 개념
 ---
 
 ## 2-2 Some important examples
-Convex set의 주요 예제들        
+### Convex set의 주요 예제들        
 * Trivial ones: empty set, point, line, line segment, ray
 * Affine space
 * Convex set
@@ -174,25 +174,38 @@ Convex set의 주요 예제들
 ### 2-2-1 Convex set examples
 
 ### 2-2-2 Convex cone examples
-* Norm cone
-    > $$C = \{(x, t) : \|x\| \le t\} \subseteq R^{n+1}, \; \text{for a norm} \; \|·\|, \; t \in \mathbb R $$
-    * 
-* Normal cone
-    * Noraml cone은 tangent cone으로부터 정의될 수도 있음
-    * Normal cone, tangent cone 예시
-* Positive semidefinite cone
+### Norm cone
+> $$C = \{(x, t) : \|x\| \le t\} \subseteq R^{n+1}, \; \text{for a norm} \; \|·\|, \; t \in \mathbb R $$
+     
+### Normal cone
+* Noraml cone은 tangent cone으로부터 정의될 수도 있음
+* Normal cone, tangent cone 예시
+### Positive semidefinite cone
 
 ---
 
 ## 2-3 Operations that preserve convexity
-* Intersection
-* Affine functions
-* Perspective function
-* Linear-fractional functions
+### Intersection
+### Affine functions
+### Perspective function
+### Linear-fractional functions
 
 ---
 
 ## 2-4 Generalized inequalities
+n차원 실수 공간 $$에서 두 점의 순서를 비교하기 위한 generalized inequality 
+
+
+### Proper cone
+
+### Generalized inequality 
+
+### Minimum and minmal elements
+* Minimum elements
+* Minimal elements
+* $R^2_+$ cone에서 minimum과 minimal 
+
+![Generalized inequalities](https://user-images.githubusercontent.com/17296297/134010434-6e7416d6-97be-41dc-a895-f815a684f372.png)
 
 ---
 
@@ -204,3 +217,4 @@ Convex set의 주요 예제들
 ### 2-6-1 Dual cones
 
 ### 2-6-2 Dual generalized inequalities
+
