@@ -13,6 +13,9 @@ use_math: false
  
 date: 2021-09-19
 last_modified_at: 2021-09-19
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
  Local repository에서 원격 repository로 push 할 경우 username과 password를 요구한다. 

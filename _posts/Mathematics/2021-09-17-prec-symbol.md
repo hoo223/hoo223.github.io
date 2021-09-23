@@ -13,6 +13,9 @@ use_math: true
  
 date: 2021-09-17
 last_modified_at: 2021-09-17
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
 ## [What does the math symbol  ≺  mean, as in  1≺loglogn≺logn ?](https://www.quora.com/What-does-the-math-symbol-prec-mean-as-in-1-prec-log-log-n-prec-log-n)

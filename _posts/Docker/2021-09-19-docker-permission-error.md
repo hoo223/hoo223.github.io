@@ -13,6 +13,9 @@ use_math: true
  
 date: 2021-09-19
 last_modified_at: 2021-09-19
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
 # Error Description 

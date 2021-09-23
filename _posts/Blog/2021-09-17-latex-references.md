@@ -13,6 +13,9 @@ use_math: true
  
 date: 2021-09-17
 last_modified_at: 2021-09-17
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
 # [위키백과:TeX 문법](https://ko.wikipedia.org/wiki/%EC%9C%84%ED%82%A4%EB%B0%B1%EA%B3%BC:TeX_%EB%AC%B8%EB%B2%95)

@@ -13,6 +13,9 @@ use_math: true
  
 date: 2021-09-16
 last_modified_at: 2021-09-16
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 # 0. Reference
 [모두를 위한 컨벡스 최적화](https://convex-optimization-for-all.github.io/)     

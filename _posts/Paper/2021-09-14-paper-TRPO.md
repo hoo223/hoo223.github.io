@@ -12,6 +12,9 @@ toc_sticky: true
  
 date: 2021-09-15
 last_modified_at: 2021-09-15
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
 PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합니다.  

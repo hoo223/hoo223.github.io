@@ -12,6 +12,9 @@ toc_sticky: true
  
 date: 2021-09-14
 last_modified_at: 2021-09-19
+sitemap :
+  changefreq : daily
+  priority : 1.0
 ---
 
 ## 1. Github Blog 생성
