@@ -5,7 +5,7 @@ excerpt: "Trust Region Policy Optimization 논문 정리"
 categories:
   - Paper
 tags:
-  - [Paper, Research, RL, Policy-based, In-progress]
+  - [Research, RL, Policy-based, In-progress]
 
 toc: true
 toc_sticky: true

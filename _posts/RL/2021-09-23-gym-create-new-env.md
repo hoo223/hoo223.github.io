@@ -3,9 +3,9 @@ title:  "Open AI gym 새로운 환경 만들기/등록하기"
 excerpt: ""
 
 categories:
-  - Blog
+  - RL
 tags:
-  - [gym, RL, Environment]
+  - [gym, Environment]
 
 toc: false
 toc_sticky: true

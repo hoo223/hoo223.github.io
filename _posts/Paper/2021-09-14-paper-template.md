@@ -5,7 +5,7 @@ excerpt: "paper 테스트 "
 categories:
   - Paper
 tags:
-  - [Paper, Research]
+  - [Research]
 
 toc: true
 toc_sticky: true
