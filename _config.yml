@@ -20,7 +20,7 @@ title                    : "My footprints"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Hoosang Lee"
-description              : ""
+description              : "공부한 내용을 정리하는 공간"
 url                      : "https://hoo223.github.io" # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 repository               : "hoo223/hoo223.gitbub.io" # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
