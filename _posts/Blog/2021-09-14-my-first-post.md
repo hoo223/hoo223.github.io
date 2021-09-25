@@ -5,9 +5,9 @@ excerpt: "Github Blog를 만들고 포스팅 해보기 "
 categories:
   - Blog
 tags:
-  - [Blog, jekyll, Github, Git]
+  - [jekyll, Github, Git]
 
-toc: true
+toc: false
 toc_sticky: true
  
 date: 2021-09-14

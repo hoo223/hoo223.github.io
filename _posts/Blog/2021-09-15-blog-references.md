@@ -5,9 +5,9 @@ excerpt: "Github blog를 꾸밀 때 참고한 사이트들"
 categories:
   - Blog
 tags:
-  - [Blog, jekyll, Github, Git, minimal-mistake, mathjax]
+  - [jekyll, Github, Git, minimal-mistake, mathjax]
 
-toc: true
+toc: false
 toc_sticky: true
  
 date: 2021-09-14
