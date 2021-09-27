@@ -5,7 +5,7 @@ excerpt: "'Springer handbook of robotics' 정리"
 categories:
   - Robotics
 tags:
-  - [Kinematics, In-progress]
+  - [Kinematics]
 
 toc: false
 toc_sticky: true

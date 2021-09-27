@@ -1,11 +1,11 @@
 ---
-title:  "[Springer handbook] 2. Kinematics - 2.10 Static Wrench Transmission"
+title:  "[Springer handbook] 2. Kinematics - 2.5 Workspace"
 excerpt: "'Springer handbook of robotics' 정리"
 
 categories:
-  - Robotics
+  - In-progress
 tags:
-  - [Kinematics, In-progress]
+  - [Kinematics]
 
 toc: false
 toc_sticky: true
@@ -17,4 +17,6 @@ sitemap :
   changefreq : daily
   priority : 1.0
 ---
+
+
 

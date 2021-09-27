@@ -3,16 +3,16 @@ title:  "[Springer handbook] 2. Kinematics - 2.2 Position and Orientation Repres
 excerpt: "'Springer handbook of robotics' 정리"
 
 categories:
-  - Robotics
+  - In-progress
 tags:
-  - [Kinematics, In-progress]
+  - [Kinematics]
 
 toc: false
 toc_sticky: true
 use_math: true
  
 date: 2021-09-25
-last_modified_at: 2021-09-25
+last_modified_at: 2021-09-27
 sitemap :
   changefreq : daily
   priority : 1.0
