@@ -17,6 +17,7 @@ sitemap :
   changefreq : daily
   priority : 1.0
 ---
+
 # 0. Reference
 [모두를 위한 컨벡스 최적화](https://convex-optimization-for-all.github.io/)     
 [CMU 강의](http://www.stat.cmu.edu/~ryantibs/convexopt-F16/#miscellaneous)      
