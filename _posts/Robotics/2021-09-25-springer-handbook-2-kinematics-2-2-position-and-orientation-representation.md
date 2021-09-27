@@ -53,7 +53,8 @@ $$^{j}\mathbf{p}_{i}=(^{j}p_i^x, ^{j}p_i^y, ^{j}p_i^z)^T$$
 
 ## Displacement
 ### **Translation**
-> Rigid body 상의 어떤 point도 초기 위치를 유지하지 않고, rigid body 상의 모든 직선이 처음의 방향과 평행을 유지하는 displacement 
+> Rigid body 상의 어떤 point도 초기 위치를 유지하지 않고, rigid body 상의 모든 직선이 처음의 방향과 평행을 유지하는 displacement    
+
 * 어떤 position에 대한 표현도 translation (displacement)을 표현하는데 사용될 수 있고, 그 반대도 마찬가지. (position $\Leftrightarrow$ translation)
 
 # 2.2.2 Orientation and Rotation
@@ -61,7 +62,8 @@ Position에 대한 표현보다 orientation에 대한 표현이 훨씬더 광범
 
 
 ### **Rotation**
-> Rigid body 상의 적어도 한 점이 초기 위치를 유지하고, body 상의 모든 직선이 초기 방향과의 평행을 유지하지 않는 displacement
+> Rigid body 상의 적어도 한 점이 초기 위치를 유지하고, body 상의 모든 직선이 초기 방향과의 평행을 유지하지 않는 displacement    
+
 * 예를 들면, 어떤 body가 있다고 회전 축(axis)을 중심으로 회전할 때 회전 축 상에 존재하는 body 상의 point들은 초기 위치를 유지한다. 
 * Position과 translation의 경우와 마찬가지로, 어떤 orientation에 대한 표현도 rotation (displacement)을 표현하는데 사용될 수 있고, 그 반대도 마찬가지. (orientation $\Leftrightarrow$ rotation)
 
