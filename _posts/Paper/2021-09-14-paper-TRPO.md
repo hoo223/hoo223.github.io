@@ -7,7 +7,7 @@ categories:
 tags:
   - [Research, RL, Policy-based]
 
-toc: true
+toc: false
 toc_sticky: true
  
 date: 2021-09-15
@@ -28,13 +28,13 @@ PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합�
 # 1. Introduction
 
 ## Motivation
-많은 policy optimization 알고리즘들은 크게 3가지로 분류할 수 있다. 
+많은 policy optimization 알고리즘들은 크게 3가지로 분류할 수 있다.    
 1) Policy iteration methods
-    * 현재 policy 하에서 value function을 추정하고 -> policy를 향상시키는 과정을 반복 (Bertsekas, 2005)
-2) Policy gradient methods
-    * Sample trajectories로부터 얻어지는 expected return (total reward)의 gradient estimator를 사용 (Peters & Schaal, 2008a)
-3) Derivative-free optimization methods
-    * Cross-entropy method (CEM), covariance matrix adaptation (CMA)
+    * 현재 policy 하에서 value function을 추정하고 -> policy를 향상시키는 과정을 반복 (Bertsekas, 2005)   
+2) Policy gradient methods    
+    * Sample trajectories로부터 얻어지는 expected return (total reward)의 gradient estimator를 사용 (Peters & Schaal, 2008a)    
+3) Derivative-free optimization methods   
+    * Cross-entropy method (CEM), covariance matrix adaptation (CMA)    
         * Return을 policy parameter에 대해 최적화되어야 할 black box function으로 다룸 (Szita & Lorincz, 2006)
 
 CEM과 CMA와 같은 일반적인 derivative-free stochastic optimization methods는 많은 문제들에서 선호된다. 왜냐하면 이해하고 구현하기가 쉬우면서도 좋은 결과를 내기 때문이다. 
@@ -85,17 +85,19 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ---
 
 ## Useful identity from "Kakade & Langford (2002)"
-![5](https://user-images.githubusercontent.com/17296297/133378277-26b76044-f0ce-4c5b-a9cf-a10cc2cf3a3d.png)
-* 한 policy π의 expected return과 다른 policy π ̃의 expected return 간의 관계를 표현한 식
-* the expected return of another policy π ̃  in terms of the advantage over π, accumulated over timesteps
-* 증명 -> Appendix A
-* 의미
-  * 모든 state s에서 nonnegative expected advantage를 갖는 모든 policy update π→π ̃  는 policy performance η의 증가 또는 상수로 남아있는 것을 보장함 (expected advantage가 모두 0인 경우) = policy 성능이 떨어지지 않는 것을 보장    
-  * Deterministic policy π ̃(s)=argmax_a A_π (s,a)를 사용하는 policy iteration에 의해 수행되는 update의 결과와 동일
+![5](https://user-images.githubusercontent.com/17296297/133378277-26b76044-f0ce-4c5b-a9cf-a10cc2cf3a3d.png)   
+식 (1)은 한 policy π의 expected return과 다른 policy π ̃의 expected return 간의 관계를 표현한 식이다. 
+* the expected return of another policy $\tilde{\pi}$ in terms of the advantage over $\pi$, accumulated over timesteps
+* 이에 대한 증명은 본 논문의 Appendix A를 참조
+
+이 식의 의미는 다음과 같이 해석할 수 있다. 
+  * 모든 state s에서 nonnegative expected advantage를 갖는 모든 policy update $\pi \rightarrow \tilde{\pi}$ 는 policy performance $\eta$가 증가하거나 유지하는 것을 보장함 (expected advantage가 모두 0인 경우) = policy 성능이 떨어지지 않는 것을 보장함    
+  * 이는 Deterministic policy $\tilde{\pi}=argmax_a A_\pi (s,a)$를 사용하는 policy iteration에 의해 수행되는 update의 결과와 동일하다.
     * 만약 positive advantage value와 nonzero state visitation probability를 갖는 state-action pair가 적어도 하나 존재한다면 policy가 향상됨
-    * 그렇지 않을 경우 optimal policy로 수렴
-* 문제점
-  * 일반적으로 approximate setting에서는 추정/근사 error에 의해 어떤 state s에서 expected advantage가 음수인 경우들이 존재    
+    * 그렇지 않을 경우, optimal policy로 수렴
+
+그러나 다음과 문제점이 존재한다. 
+  * 일반적으로 approximate setting에서는, 추정/근사 error에 의해 어떤 state s에서 expected advantage가 **음수**인 경우들이 존재    
   ![6](https://user-images.githubusercontent.com/17296297/133378275-5bf9667b-4fda-4f16-904f-b3fde85c234c.png)
   * ρ_π ̃  (s)에서 π ̃에 대한 의존성이 존재해 직접적인 최적화를 어렵게 만듦
 * Solution
@@ -189,7 +191,9 @@ In our experiments, we show that the same TRPO methods can learn complex policie
   * 실험을 통해 maximum KL divergence와 비슷한 성능임을 보임
 
 # 5. Sample-Based Estimation of the Objective and Constraint
-* Monte Carlo simulation을 사용해 objective와 constraint function을 근사    
+이전 section에서는 policy parameter에 대한 constrained optimization problem을 제안했다 (Equation (12)). 이 optimization problem은 매 update마다 policy의 변화에 대한 constraint 하에서 expected total reward $\eta$의 추정값을 최적화한다.
+
+ Monte Carlo simulation을 사용해 objective와 constraint function을 근사    
 ...
 
 
