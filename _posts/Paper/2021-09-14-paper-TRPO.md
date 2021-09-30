@@ -25,7 +25,22 @@ PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합�
 [[쉽게읽는 강화학습 논문 5화] TRPO 논문 리뷰](https://www.youtube.com/watch?v=XBO4oPChMfI&t=3268s)    
 [TRPO 논문](https://arxiv.org/abs/1502.05477)
 
-# 1. Motivation & Contribution
+# 1. Introduction
+
+많은 policy optimization 알고리즘들은 크게 3가지로 분류할 수 있다. 
+1) Policy iteration methods
+    * 현재 policy 하에서 value function을 추정하고 -> policy를 향상시키는 과정을 반복 (Bertsekas, 2005)
+2) Policy gradient methods
+    * Sample trajectories로부터 얻어지는 expected return (total reward)의 gradient estimator를 사용 (Peters & Schaal, 2008a)
+3) Derivative-free optimization methods
+    * Cross-entropy method (CEM), covariance matrix adaptation (CMA)
+        * Return을 policy parameter에 대해 최적화되어야 할 black box function으로 다룸 (Szita & Lorincz, 2006)
+
+CEM과 CMA와 같은 일반적인 derivative-free stochastic optimization methods는 많은 문제들에서 선호된다. 왜냐하면 이해하고 구현하기가 쉬우면서도 좋은 결과를 내기 때문이다. 
+* 예를 들면, 테트리스가 approximate dynamic programming (ADP) 방법들을 위한 전통적인 benchmark 문제임에도, stochatic optimization methods는 이 문제를 풀기 어렵다 (Gabillon et al., 2013). 
+
+## Motivation & Contribution
+
 
 ---
 ---
