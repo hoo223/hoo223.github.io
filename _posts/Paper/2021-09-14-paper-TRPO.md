@@ -27,6 +27,7 @@ PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합�
 
 # 1. Introduction
 
+## Motivation
 많은 policy optimization 알고리즘들은 크게 3가지로 분류할 수 있다. 
 1) Policy iteration methods
     * 현재 policy 하에서 value function을 추정하고 -> policy를 향상시키는 과정을 반복 (Bertsekas, 2005)
@@ -37,10 +38,27 @@ PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합�
         * Return을 policy parameter에 대해 최적화되어야 할 black box function으로 다룸 (Szita & Lorincz, 2006)
 
 CEM과 CMA와 같은 일반적인 derivative-free stochastic optimization methods는 많은 문제들에서 선호된다. 왜냐하면 이해하고 구현하기가 쉬우면서도 좋은 결과를 내기 때문이다. 
-* 예를 들면, 테트리스가 approximate dynamic programming (ADP) 방법들을 위한 전통적인 benchmark 문제임에도, stochatic optimization methods는 이 문제를 풀기 어렵다 (Gabillon et al., 2013). 
+* 예를 들면, 테트리스가 approximate dynamic programming (ADP) 방법들을 위한 전통적인 benchmark 문제임에도 stochatic optimization methods를 이기기 어려웠다 (Gabillon et al., 2013). 
+* Continuous control problem에서는, CMA 같은 방법들이 locomotion과 같은 challenging tasks를 위한 control policy를 배우는데 성공을 거둬왔다. 
 
-## Motivation & Contribution
+Gradient-based optimization 알고리즘은 gradient-free 방법보다 더 나은 sample complexity을 보장하지만 성능면에서 일관되게 이기지 못한다는 점에서 만족스럽지 못하다. 
 
+Continuous gradient-based optimization은 수많은 parameter들을 사용하여 supervised learning tasks를 위한 function approximator를 배우는데 매우 큰 성공을 거둬왔고, 이를 강화학습으로 확장하면 복잡하고 강력한 policy를 효과적으로 훈련할 수 있다.
+
+
+## Contribution
+이 논문에서는 
+* 먼저, 특정 surrogate objective function을 non-trivial step size로 minimize하는 것이 policy improvement를 보장하는 것을 증명하였다. 
+* 그 후 이론적으로 정당화된 (theoretically-justifie) 알고리즘에 일련의 근사화 과정을 거쳐 **trust region policy optimization (TRPO)** 라고 불리는 실용적인 알고리즘을 도출함.
+* 이 알고리즘의 두 가지 변형을 묘사함    
+    1) *single-path* method
+        * can be applied in the model-free setting
+    2) *vine* method
+        * requires the system to be restored to particular states, which is typically only possible in simulation
+
+These algorithms are scalable and can optimize nonlinear policies with tens of thousands of parameters, which have previ- ously posed a major challenge for model-free policy search (Deisenroth et al., 2013). 
+
+In our experiments, we show that the same TRPO methods can learn complex policies for swimming, hopping, and walking, as well as playing Atari games directly from raw images.
 
 ---
 ---
