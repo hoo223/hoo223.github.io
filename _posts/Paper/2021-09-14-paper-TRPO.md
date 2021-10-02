@@ -9,6 +9,7 @@ tags:
 
 toc: false
 toc_sticky: true
+use_math: true
  
 date: 2021-09-15
 last_modified_at: 2021-09-30
