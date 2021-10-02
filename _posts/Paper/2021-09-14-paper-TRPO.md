@@ -99,15 +99,15 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 그러나 다음과 문제점이 존재한다. 
   * 일반적으로 approximate setting에서는, 추정/근사 error에 의해 어떤 state s에서 expected advantage가 **음수**인 경우들이 존재    
   ![6](https://user-images.githubusercontent.com/17296297/133378275-5bf9667b-4fda-4f16-904f-b3fde85c234c.png)
-  * ρ_π ̃  (s)에서 π ̃에 대한 의존성이 존재해 직접적인 최적화를 어렵게 만듦
+  * $\rho_{\tilde{\pi}}(s)$에서 $\pi$ ̃에 대한 의존성이 존재해 직접적인 최적화를 어렵게 만듦
 * Solution
-  * Local approximation to η    
+  * Local approximation to $\eta$    
     ![7](https://user-images.githubusercontent.com/17296297/133378274-264562cf-be65-4173-a16e-03538a644e9d.png)
     * policy 변화에 따른 state visitation density의 변화를 무시 -> 이래도 되는가? 
-    * 가능함. θ로 미분 가능한 parameterized policy π_θ 를 고려할 경우 -> θ_0 (=〖 θ〗_old)에서 first order까지 일치 (see Kakade & Langford (2002))    
+    * 가능하다. θ로 미분 가능한 parameterized policy $\pi_\theta$ 를 고려할 경우 -> $\theta_0 (= \theta_{old})$에서 first order까지 일치 (see Kakade & Langford (2002))    
     ![8](https://user-images.githubusercontent.com/17296297/133378272-c25da6c6-cb80-4d5a-86da-45d4105423e7.png)
-      * 의미 : L_(〖π_θ〗_old ) 를 향상시키는 충분히 작은 step π_(θ_0 )→π ̃는 η 또한 향상시킴    
-      "L_(〖π_θ〗_old ) 를 증가 시키는 것이 곧 η 를 증가시키는 것과 같다!"
+      * 의미 : $L_{\pi_{\theta_{old}}}$를 향상시키는 충분히 작은 step $\pi_{\theta_0} \rightarrow \tilde{\pi}$는 $\eta$ 또한 향상시킴    
+      **"$L_{\pi_{\theta_{old}}}$를 증가 시키는 것이 곧 $\eta$ 를 증가시키는 것과 같다!"**
       * 문제점 : step 크기가 얼마나 작아야 하는지는 모름
 
 ---
@@ -115,9 +115,9 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ## Conservative policy iteration
 * 위 문제를 다루기 위해 Kakade & Langford (2002)가 제안한 policy updating scheme    
   ![9](https://user-images.githubusercontent.com/17296297/133378268-3f09ed77-bdd4-4dfa-be3c-400cf919eacd.png)
-  * π_old  : current policy
-  * π^′=argmax_(π^′ ) L_(〖π_θ〗_old ) (π^′
-* η의 improvement에 대한 명시적인 lower bounds를 제공   
+  * $\pi_{old}$  : current policy
+  * $\pi'=argmax_{\pi'}L_{\pi_{\theta_{old}}}(\pi')$
+* $\eta$의 improvement에 대한 명시적인 lower bounds를 제공   
   ![10](https://user-images.githubusercontent.com/17296297/133378266-51dc2e26-35fc-411a-bb84-f6c947ab5ea7.png)
 * 의미
   * Right-hand side를 향상시키는 policy update가 true performance 의 향상을 보장함
@@ -129,7 +129,7 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ---
 
 # 3. Monotonic Improvement Guarantee for General Stochastic Policies
-* α를 π와 π ̃간의 distance measure로 대체하고 상수 를 적절하게 변경
+* $\alpha$를 $\pi$와 $\tilde{\pi}$ 간의 distance measure로 대체하고 상수 를 적절하게 변경
   * Distance measure = total variation divergence for discrete probability distribution p, q  
   ![11](https://user-images.githubusercontent.com/17296297/133378263-024a308d-cb4a-4ee9-ba11-2547c0c81319.png)
   ![12](https://user-images.githubusercontent.com/17296297/133378260-06dbacd6-c7c2-4b68-859b-32fcf65aebd2.png)
@@ -155,15 +155,15 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ## Algorithm 1: Policy iteration algorithm guaranteeing non- decreasing expected return η
 ![18](https://user-images.githubusercontent.com/17296297/133378251-64ff33ee-201c-415e-ae75-9e4a99f35efa.png)    
 * Equation (9)의 policy improvement bound 기반의 policy iteration scheme
-* 여기서는 advantage values A_π 의 정확한 계산를 가정
+* 여기서는 advantage values $A_\pi$ 의 정확한 계산를 가정
 * policy들의 monotonically improving sequence의 생성을 보장   
   ![19](https://user-images.githubusercontent.com/17296297/133378250-151d4f90-d312-47fe-87fc-0cb0553addf1.png)
   * Proof   
   ![20](https://user-images.githubusercontent.com/17296297/133378249-854668a3-4f66-432f-a24f-68fdf0d35fe0.png)
-  * 매 iteration에서 M_i 를 최대화함으로써, true objective η의 non-decreasing을 보장
+  * 매 iteration에서 $M_i$ 를 최대화함으로써, true objective η의 non-decreasing을 보장
 * Minorization-maximization (MM) algorithm의 한 종류
   * MM algorithm의 용어에서,    
-    M_i  : surrogate function that minorizes η with equality at π_i
+    $M_i$  : surrogate function that minorizes η with equality at $\pi_i$
 
 
 
