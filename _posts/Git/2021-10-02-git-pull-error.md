@@ -68,5 +68,6 @@ apply와 drop을 동시에 적용한다.
 
 
 # Reference
-https://goddaehee.tistory.com/253
-https://gmlwjd9405.github.io/
+[[Git (6)] git pull 에러 해결방법 (Your local changes to the following files would be overwritten by merge)](https://goddaehee.tistory.com/253)
+
+[[Git] git stash 명령어 사용하기](https://gmlwjd9405.github.io/2018/05/18/git-stash.html)
