@@ -29,11 +29,11 @@ PPO 논문을 이해하려면 TRPO 논문에 대한 이해가 먼저 필요합�
 
 ## Motivation
 많은 policy optimization 알고리즘들은 크게 3가지로 분류할 수 있다.    
-1) Policy iteration methods
+1. Policy iteration methods
     * 현재 policy 하에서 value function을 추정하고 -> policy를 향상시키는 과정을 반복 (Bertsekas, 2005)   
-2) Policy gradient methods    
+2. Policy gradient methods    
     * Sample trajectories로부터 얻어지는 expected return (total reward)의 gradient estimator를 사용 (Peters & Schaal, 2008a)    
-3) Derivative-free optimization methods   
+3. Derivative-free optimization methods   
     * Cross-entropy method (CEM), covariance matrix adaptation (CMA)    
         * Return을 policy parameter에 대해 최적화되어야 할 black box function으로 다룸 (Szita & Lorincz, 2006)
 
