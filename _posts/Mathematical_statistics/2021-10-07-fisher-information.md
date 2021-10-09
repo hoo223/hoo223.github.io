@@ -22,8 +22,8 @@ TRPO를 공부하다보니 Fisher information matrix라는 개념이 등장했�
 
 # Fisher Information
 
-Random variable Y가 어떤 알려진 probability density function $P(Y|\theta)$에 의해 parameter $\theta$와 연관이 있다고 가정하자. 
-* 즉, $\theta$는 hypothesis, Y는 data, $P(Y|\theta)$는 likelihood라고 볼 수 있다. 
+Random variable Y가 어떤 알려진 probability density function $P(Y|\theta)$ 에 의해 parameter $\theta$ 와 연관이 있다고 가정하자. 
+* 즉, $\theta$는 hypothesis, Y는 data, $P(Y|\theta)$ 는 likelihood라고 볼 수 있다. 
 
 Fisher inforamtion의 Goal은 다음과 같다. 
 > **Goal**: Measure how well an observation of Y locates the true value of $\theta$.
