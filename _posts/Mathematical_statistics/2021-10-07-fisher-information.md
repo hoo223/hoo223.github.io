@@ -71,16 +71,17 @@ $$
 *그림2.*    
 <br/>
 
-(1) $\mu$값에 따른 $log\mathcal{N}(y_i|\mu,\sigma^2)$ 그래프   
-(2) $\mu_0$에서 각 observation $y_i$에 대응하는 $log\mathcal{N}(y_i|\mu,\sigma^2)$의 분포       
-(3) $log\mathcal{N}(y_i|\mu,\sigma^2)$를 $\mu$에 대해 미분한 값 (=(1)에서의 기울기) 그래프 = score function    
-(4) $\mu_0$에서 각 observation $y_i$에 대응하는 ${\partial \over \partial \mu}log\mathcal{N}(y_i|\mu,\sigma^2)$의 분포  
+(1) $\mu$값에 따른 $log\mathcal{N}(y_i\mid\mu,\sigma^2)$ 그래프    
+(2) $\mu_0$에서 각 observation $y_i$에 대응하는 $log\mathcal{N}(y_i\mid\mu,\sigma^2)$의 분포       
+(3) $log\mathcal{N}(y_i\mid\mu,\sigma^2)$를 $\mu$에 대해 미분한 값 (=(1)에서의 기울기) 그래프 = score function    
+(4) $\mu_0$에서 각 observation $y_i$에 대응하는 ${\partial \over \partial \mu}log\mathcal{N}(y_i\mid\mu,\sigma^2)$의 분포  
 
 일반적으로 log likelihood를 parameter로 미분한 값을 *score function*이라 부른다. (3)의 경우, socre functiion이 linear 함수이다. 
 
 이제 $\mu_0$를 움직여보자.
 
 ![3](https://user-images.githubusercontent.com/17296297/136661536-8f4c4486-2a15-4038-a577-5b103e54ed67.gif)
+
 *그림 3*    
 <br/>
 
@@ -93,6 +94,7 @@ $$
 그 내용은 바로 우리가 true parameter value에서 socre function을 평가할 떄 (즉, $\mu_0=\mu^*$일 때), score들의 평균이 **0**이 된다는 것이다. (그림 4)
 
 ![4](https://user-images.githubusercontent.com/17296297/136661541-6a488bc4-6d57-4d41-a8f4-a19a943dfecb.png)
+
 *그림 4*    
 <br/>
 
@@ -103,6 +105,7 @@ $$
 우선, small variance를 갖는 informative case (그림 4)에서 variance를 증가시켜 large variance를 갖는 uninformative case (그림 5)를 생각해보자.  
 
 ![5](https://user-images.githubusercontent.com/17296297/136661983-42d696e0-10b8-44b1-8e47-183daa159dcb.PNG)
+
 *그림 5*    
 <br/>
 
@@ -112,7 +115,7 @@ $$
 * 정리해보자면,
     * small score value -> large search space -> less information   
     * large score value -> small search space -> more information
-* Score value가 0 근처에서는 각각의 observation들이 개별적으로 true parameter가 어디 있는지 광범위하게 추천하지만, 집합적으로는 움직이지 말라고 한다. 
+* Score value가 0 근처에서는 각각의 observation들이 개별적으로 true parameter가 어디 있는지 광범위하게 추천하지만, 집합적으로는 (평균적으로는) 움직이지 말라고 한다. 
 
 
 
