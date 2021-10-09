@@ -33,3 +33,7 @@ sitemap :
 > \mathbf{nopqrstuvwxyz} $\rightarrow \mathbf{nopqrstuvwxyz}$     
 > \mathbf{0123456789} $\rightarrow \mathbf{0123456789}$
 
+### [흘림체](https://ko.wikipedia.org/wiki/%EC%9C%84%ED%82%A4%EB%B0%B1%EA%B3%BC:TeX_%EB%AC%B8%EB%B2%95#:~:text=X%7D%20%5CPsi%20%5COmega%20%7D%7D%5C!%7D-,%ED%9D%98%EB%A6%BC%EC%B2%B4,-%5Cmathcal%7BABCDEFGHI%7D)
+> \mathcal{ABCDEFGHI} $\rightarrow \mathcal{ABCDEFGHI}$     
+> \mathcal{JKLMNOPQR} $\rightarrow \mathcal{JKLMNOPQR}$     
+> \mathcal{STUVWXYZ} $\rightarrow \mathcal{STUVWXYZ}$   

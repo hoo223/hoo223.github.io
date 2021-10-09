@@ -5,7 +5,7 @@ excerpt: "Trust Region Policy Optimization 논문 정리"
 categories:
   - In-progress
 tags:
-  - [Research, RL, Policy-based]
+  - [Research, RL, Policy-based, 2nd-order optimization, conjugate gradient method]
 
 toc: false
 toc_sticky: true
@@ -88,7 +88,7 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ## Useful identity from "Kakade & Langford (2002)"
 ![5](https://user-images.githubusercontent.com/17296297/133378277-26b76044-f0ce-4c5b-a9cf-a10cc2cf3a3d.png)   
 식 (1)은 한 policy π의 expected return과 다른 policy π ̃의 expected return 간의 관계를 표현한 식이다. 
-* the expected return of another policy $\tilde{\pi}$ in terms of the advantage over $\pi$, accumulated over timesteps
+* 두 return의 차이 -> the expected return of another policy $\tilde{\pi}$ in terms of the advantage over $\pi$, accumulated over timesteps
 * 이에 대한 증명은 본 논문의 Appendix A를 참조
 
 이 식의 의미는 다음과 같이 해석할 수 있다. 
@@ -130,13 +130,22 @@ In our experiments, we show that the same TRPO methods can learn complex policie
 ---
 
 # 3. Monotonic Improvement Guarantee for General Stochastic Policies
-* $\alpha$를 $\pi$와 $\tilde{\pi}$ 간의 distance measure로 대체하고 상수 를 적절하게 변경
-  * Distance measure = total variation divergence for discrete probability distribution p, q  
-  ![11](https://user-images.githubusercontent.com/17296297/133378263-024a308d-cb4a-4ee9-ba11-2547c0c81319.png)
-  ![12](https://user-images.githubusercontent.com/17296297/133378260-06dbacd6-c7c2-4b68-859b-32fcf65aebd2.png)
-    * 모든 state에 대한 최대값 
-* Theorem 1 (proved in the appendix)
+
+## Extension to geneal stochastic policy
+Equation (6)의 policy improvement bound는 다음의 2가지 방법을 통해 general stochastic policy로 확장될 수 있다.
+1. $\alpha$를 $\pi$와 $\tilde{\pi}$ 사이의 distance measure로 대체
+    * Distance measure = total variation divergence for discrete probability distribution p, q  
+    ![11](https://user-images.githubusercontent.com/17296297/133378263-024a308d-cb4a-4ee9-ba11-2547c0c81319.png)    
+    ![12](https://user-images.githubusercontent.com/17296297/133378260-06dbacd6-c7c2-4b68-859b-32fcf65aebd2.png)    
+        * 모든 state를 고려했을 때 최대 distance
+2. 상수 $\epsilon$ 를 적절하게 변경
+    * $\epsilon = max_{s,a}|A_\pi (s,a)|$
+
+## Theorem 1 (proved in the appendix)    
 ![13](https://user-images.githubusercontent.com/17296297/133378259-1f2b38a1-a7a9-4c1a-a885-ca024b7a958d.png)
+
+## More extension - from total variation divergence to KL divergence
+한발 더 나아가 total variation divergence와 KL divergence 간의 관계를 이용하여 
 
 * Relationship between the total variation divergence and the KL divergence (Pollard (2000), Ch. 3)   
 ![14](https://user-images.githubusercontent.com/17296297/133378258-97b2cbfb-1c6c-499c-8995-14f711cd4a1a.png)    
