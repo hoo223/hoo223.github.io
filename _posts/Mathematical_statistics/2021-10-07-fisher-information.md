@@ -20,6 +20,8 @@ sitemap :
 
 TRPO를 공부하다보니 Fisher information matrix라는 개념이 등장했는데 처음 접했던 개념이라 생소했다. 여러 자료들을 통해서 어떤 의미를 가지고 있는지, 논문에서는 어떤 흐름에서 등장했는지를 한번 정리해보고자 한다. 
 
+아래 내용은 reference [1]의 내용을 번역하여 정리한 것이다. 
+
 # Fisher Information
 
 Random variable Y가 어떤 알려진 probability density function $P(Y\mid\theta)$ 에 의해 parameter $\theta$ 와 연관이 있다고 가정하자. 
@@ -275,6 +277,7 @@ Fisher information은 우리에게 위 그림에 표시한 타원을 알려준�
 
 # Summary
 
+![21](https://user-images.githubusercontent.com/17296297/136706767-c2d978cc-9401-4210-84d2-aa18a6ac5f42.png)
 
 
 # In the paper
