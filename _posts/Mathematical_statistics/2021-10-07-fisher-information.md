@@ -249,7 +249,7 @@ Fisher information은 우리에게 위 그림에 표시한 타원을 알려준�
 *그림 18*    
 <br/>
 
-이 경우에는 각 gradient vector의 variance만 알면 된다 (covariance matrix의 대각 성분, 나머지는 다 0). 그리고 1d 경우와 거의 같은 방식으로 각각을 해석할 수 있다. 만약 그 gradient vector가 많이 변한다면 그것과 관련된 parameter를 아주 잘 정리할 수 있다. 
+이 경우에는 각 gradient vector의 variance만 알면 된다 (covariance matrix의 대각 성분, 나머지는 다 0). 그리고 1d 경우와 거의 같은 방식으로 각각을 해석할 수 있다. 만약 그 gradient vector 요소의 변화가 크다면 쉽게 true parameter를 찾을 수 있다. 
 
 이제 매우 큰 correlation을 갖는 경우를 생각해보자. 
 
