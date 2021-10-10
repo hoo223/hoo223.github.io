@@ -229,7 +229,7 @@ Normal distribution은 2차 미분 값이 항상 상수이므로 이 사실을 �
 *그림 16*    
 <br/>
 
-이제 다시 돌아와 Fisher infromation이 무엇을 해야하는지 생각해보자. 우리는 이 0에 중심이 있는 2d histogram을 묘사해야 한다. 1d case에서는 variance를 이용해 묘사하였다. 2d에서는 *covariance matrix*를 사용한다. 이  matrix는 한 분포에서 sampling된 vector의 원소들이 어떻게 함께 변하는지를 묘사한 square grid 형태의 숫자들이다. 
+이제 다시 돌아와 Fisher infromation이 무엇을 해야하는지 생각해보자. 우리는 이 0에 중심이 있는 2d histogram을 묘사해야 한다. 1d case에서는 variance를 이용해 묘사하였다. 2d에서는 *covariance matrix*를 사용한다. 이 matrix는 한 분포에서 sampling된 vector의 원소들이 어떻게 함께 변하는지를 묘사한 square grid 형태의 숫자들이다. 
 
 따라서 더 높은 차원의 Fisher information은 **gradient vector들의 covariance matrix**이다. 
 
@@ -247,7 +247,7 @@ Fisher information은 우리에게 위 그림에 표시한 타원을 알려준�
 *그림 18*    
 <br/>
 
-이 경우에는 각 gradient vector의 variance만 알면 된다 (covariance matrix의 대각 성분, 나머지는 다 0). 그리고 1d 경우와 거의 같은 방식으로 각가을 해석할 수 있다. 만약 그 gradient vector가 많이 변한다면 그것과 관련된 parameter를 아주 잘 정리할 수 있다. 
+이 경우에는 각 gradient vector의 variance만 알면 된다 (covariance matrix의 대각 성분, 나머지는 다 0). 그리고 1d 경우와 거의 같은 방식으로 각각을 해석할 수 있다. 만약 그 gradient vector가 많이 변한다면 그것과 관련된 parameter를 아주 잘 정리할 수 있다. 
 
 이제 매우 큰 correlation을 갖는 경우를 생각해보자. 
 
