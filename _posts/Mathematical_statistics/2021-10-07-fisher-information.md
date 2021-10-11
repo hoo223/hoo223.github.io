@@ -233,7 +233,7 @@ Normal distribution은 2차 미분 값이 항상 상수이므로 이 사실을 �
 
 이제 다시 돌아와 Fisher infromation이 무엇을 해야하는지 생각해보자. 우리는 이 0에 중심이 있는 2d histogram을 묘사해야 한다. 1d case에서는 variance를 이용해 묘사하였다. 2d에서는 *covariance matrix*를 사용한다. 이 matrix는 한 분포에서 sampling된 vector의 원소들이 어떻게 함께 변하는지를 묘사한 square grid 형태의 숫자들이다. 
 
-따라서 더 높은 차원의 Fisher information은 **gradient vector들의 covariance matrix**이다. 
+따라서 더 높은 차원의 Fisher information은 **gradient vector들의 covariance matrix**이다. 이를 **Fisher information matrix**라고 부른다. 
 
 ![17](https://user-images.githubusercontent.com/17296297/136703472-279d341d-df22-4eb4-a6b3-3901ba5590a2.png)
 
@@ -280,15 +280,49 @@ Fisher information은 우리에게 위 그림에 표시한 타원을 알려준�
 ![21](https://user-images.githubusercontent.com/17296297/136706767-c2d978cc-9401-4210-84d2-aa18a6ac5f42.png)
 
 
-# In the paper
+# In the view of natural gradient
+
+natural gradient 관점에서 Fisher information 정리하기
+
+ttps://julien-vitay.net/deeprl/NaturalGradient.html 
+
+When using the symmetric KL divergence to measure the distance between two distributions, the corresponding Riemannian metric is the Fisher Information Matrix (FIM), defined as the Hessian matrix of the KL divergence around θ, i.e. the matrix of second order derivatives w.r.t the elements of θ.
+
+The Fisher information matrix is defined as the Hessian of the KL divergence around θ, i.e. how the manifold locally changes around θ: F(θ)=∇2DJS(p(x;θ)||p(x;θ+Δθ))|Δθ=0
+
+Why is it useful? The Fisher Information matrix allows to locally approximate (for small Δθ) the KL divergence between the two close distributions (using a second-order Taylor series expansion): DJS(p(x;θ)||p(x;θ+Δθ))≈ΔθTF(θ)Δθ
+
+The KL divergence is then locally quadratic, which means that the update rules obtained when minimizing the KL divergence with gradient descent will be linear.
+
+# In paper
+
+## Natural Gradient Works Efficiently in Learning (1998)
+
+* "The Riemannian structure of the parameter space of a statistical model is defined by the Fisher information (Rao, 1945; Amari, 1985)."
+* "This is the only invariant metric to be given to the statistical model (Chentsov, 1972; Campbell, 1985; Amari, 1985)."
+
+## Natural Policy Gradient (2001)
+
+* "As shown by Amari (see [1]), the Fisher information matrix, up to a scale, is an invariant metric on the space of the parameters of probability distributions. It is invariant in the sense that it defines the same distance between two points regardless of the choice of coordinates (ie the param- eterization) used, unlike G = I."
+
+## TRPO
 
 TRPO 논문에서 constrained optimization problem을 푸는 과정은 두 가지 단계로 나누어진다. 
 
 첫 번째 단계는 search direction을 찾는 과정이고, 두 번째 단계는 그 방향을 따라 line search를 수행하는 과정이다. 
 
 
-에서 KL divergence constraint를 quadratic 
 
+
+# 수학적 증명
+
+https://agustinus.kristia.de/techblog/2018/03/11/fisher-information/
+
+Fisher Information과 KL-divergence 간의 관계 https://agustinus.kristia.de/techblog/2018/03/14/natural-gradient/
+
+https://en.wikipedia.org/wiki/Fisher_information
+
+2nd order Taylor expansion of KL divergence http://people.eecs.berkeley.edu/~pabbeel/cs287-fa09/lecture-notes/lecture20-2pp.pdf page6
 
 
 # Reference
