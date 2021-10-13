@@ -293,7 +293,11 @@ Deep RL에서, old policy와 update된 new policy 간의 차이가 크면 policy
 
 여기서 말하는 policy는 (action의) distribution을 의미한다. 단순히 loss를 줄이는 방향으로 parameter를 변화시키는 것 뿐만 아니라 두 distribution 간의 변화도 커지지 않도록 신경써야 한다. 결론적으로, 우리는 parameter 변화와 policy 변화 간의 관계에 주목해야 한다. 이를 위해 parameter space 자체에서가 아닌 parameter들에 의해 정의된 distribution의 statistical manifold 상에서 gradient descent를 적용해야 한다. 
 
-어떤 parameterized distribution $p(x;\theta)$를 생각해보자. 어떤 작은 parameter 변화 $\Delta \theta$가 발생하면 $p(x;\theta+\Delta \theta)$가 된다. 그림에서와 같이 parameter space에서의 Euclidean metric $\parallel \theta + \Delta \theta - \theta \parallel^2$은 statistical manifold의 구조를 고려하지 못한다. 
+![22](https://user-images.githubusercontent.com/17296297/137173710-6a7276f8-ba9e-47bb-89d9-d493b373e134.PNG)
+
+*그림 22*
+
+어떤 parameterized distribution $p(x;\theta)$를 생각해보자. 어떤 작은 parameter 변화 $\Delta \theta$가 발생하면 $p(x;\theta+\Delta \theta)$가 된다. 그림 22에서와 같이 parameter space에서의 Euclidean metric $\parallel \theta + \Delta \theta - \theta \parallel^2$은 statistical manifold의 구조를 고려하지 못한다. 
 
 우리는 부분적으로 $\theta$와 $\theta+\Delta \theta$사이의 manifold의 curvature를 고려하는 **Riemannian metric**을 정의할 필요가 있다. Rimannian distance는 dot product로 정의된다:
 $$
