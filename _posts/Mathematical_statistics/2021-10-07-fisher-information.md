@@ -12,7 +12,7 @@ toc_sticky: true
 use_math: true
  
 date: 2021-10-07
-last_modified_at: 2021-10-07
+last_modified_at: 2021-10-14
 sitemap :
   changefreq : daily
   priority : 1.0
@@ -281,19 +281,61 @@ Fisher information은 우리에게 위 그림에 표시한 타원을 알려준�
 
 
 # In the view of natural gradient
+## natural gradient 관점에서 Fisher information 정리하기
 
-natural gradient 관점에서 Fisher information 정리하기
+https://julien-vitay.net/deeprl/NaturalGradient.html 
 
-ttps://julien-vitay.net/deeprl/NaturalGradient.html 
+https://www.andrew.cmu.edu/course/10-703/slides/Lecture_NaturalPolicyGradientsTRPOPPO.pdf
 
-When using the symmetric KL divergence to measure the distance between two distributions, the corresponding Riemannian metric is the Fisher Information Matrix (FIM), defined as the Hessian matrix of the KL divergence around θ, i.e. the matrix of second order derivatives w.r.t the elements of θ.
+Deep RL에서, old policy와 update된 new policy 간의 차이가 크면 policy gradient 값을 추정할 때 old policy로 추정된 Q값들을 사용하기가 어려워 진다. 따라서 actor(policy)는 critic보다 훨씬 느리게 변해야 한다. 
 
-The Fisher information matrix is defined as the Hessian of the KL divergence around θ, i.e. how the manifold locally changes around θ: F(θ)=∇2DJS(p(x;θ)||p(x;θ+Δθ))|Δθ=0
+이러한 문제를 해결하기 위해서는 steepest descent와 반대로 policy의 가장 작지만 옳바른 방향으로 변화를 만드는 가장 큰 parameter 변화 $\Delta\theta$를 찾아야 한다. Update 전후 policy의 변화가 크지 않으면 우리는 이전 policy의 Q값들을 활용하는 식으로 과거의 경험을 재사용할 수 있다. 
 
-Why is it useful? The Fisher Information matrix allows to locally approximate (for small Δθ) the KL divergence between the two close distributions (using a second-order Taylor series expansion): DJS(p(x;θ)||p(x;θ+Δθ))≈ΔθTF(θ)Δθ
+여기서 말하는 policy는 (action의) distribution을 의미한다. 단순히 loss를 줄이는 방향으로 parameter를 변화시키는 것 뿐만 아니라 두 distribution 간의 변화도 커지지 않도록 신경써야 한다. 결론적으로, 우리는 parameter 변화와 policy 변화 간의 관계에 주목해야 한다. 이를 위해 parameter space 자체에서가 아닌 parameter들에 의해 정의된 distribution의 statistical manifold 상에서 gradient descent를 적용해야 한다. 
 
-The KL divergence is then locally quadratic, which means that the update rules obtained when minimizing the KL divergence with gradient descent will be linear.
+어떤 parameterized distribution $p(x;\theta)$를 생각해보자. 어떤 작은 parameter 변화 $\Delta \theta$가 발생하면 $p(x;\theta+\Delta \theta)$가 된다. 그림에서와 같이 parameter space에서의 Euclidean metric $\parallel \theta + \Delta \theta - \theta \parallel^2$은 statistical manifold의 구조를 고려하지 못한다. 
 
+우리는 부분적으로 $\theta$와 $\theta+\Delta \theta$사이의 manifold의 curvature를 고려하는 **Riemannian metric**을 정의할 필요가 있다. Rimannian distance는 dot product로 정의된다:
+$$
+  \parallel \Delta \theta \parallel^2 = <\Delta\theta,F(\theta),\Delta\theta>
+$$
+여기서 $F(\theta)$는 Riemannian metric tensor라고 불리고 point $\theta$에서 manifold의 tangent space에서의 inner product이다. 
+
+두 distribution 사이의 거리를 측정하기 위해 symmetric KL divergence (Jensen-Shannon (JS) divergence)를 사용할 때 대응하는 Riemannian metric이 **Fisher Information Matrix** (FIM)이다. $\theta$ 근처에서 KL divergence의 Hessian matrix로 정의된다. 이는 manifold가 $\theta$ 주변에서 국소적으로 어떻게 변화는지를 나타낸다:
+$$
+  F(\theta)=\nabla^2D_{JS}(p(x;\theta)\mid\mid p(x;\theta + \Delta\theta))\mid_{\Delta\theta=0}
+$$
+이는 2차 미분에 대한 계산이 필요하고 매우 복잡하고 느리다 (특히 파라미터 수가 많을 때). 다행히도, 좀 더 간단한 버전이 존재한다. log-likelihood의 gradient들 간의 outer product에만 의존한다:
+$$
+  F(\theta)=\mathbb{E}_{x\sim p(x,\theta)}[\nabla log p(x;\theta)(\nabla log p(x;\theta))^T]
+$$
+
+Fisher information matrix가 유용한 이유 중 하나는 가까운 두 distribution 사이의 KL divergence를 국소적으로(locally) 근사 가능하게 해주기 때문이다. 
+$$
+  D_{JS}(p(x;\theta)\mid\mid p(x;\theta + \Delta\theta)) \approx \Delta\theta^TF(\theta) \Delta\theta
+$$
+
+그러면 KL divergence는 국소적으로 quadratic하다. 이는 KL divergence를 gradient descent로 최소화 할 때 얻는 update rule이 linear 하다는 의미이다. 
+
+우리가 $\theta$로 매개변수화된 loss function L을 distribution p를 고려하여 최소화하기 원한다고 가정해보자. **Natural gradient descent**는 KL divergence surface의 local curvature를 사용하여 $L(\theta)$의 gradient를 교정함으로써 p에 의해 정의된 statistical manifold를 따라 움직이려고 한다. 이는 $\tilde{\nabla}_\theta L(\theta)$ 방향을 따라 주어진 거리를 움직이는 것과 같다:
+$$
+  \tilde{\nabla}_\theta L(\theta)=F(\theta)^{-1}\nabla_\theta L(\theta)
+$$
+
+$\tilde{\nabla}_\theta L(\theta)$가 바로 $L(\theta)$의 **natural gradient**이다. Natural gradient descent는 단순히 이 방향으로 step을 진행하는 것이다:
+$$
+  \Delta \theta = - \eta \tilde{\nabla}_\theta L(\theta)
+$$
+
+Manifold가 curve가 아닌 경우,
+* $F(\theta) = I$ (identity matrix)
+* Natural gradient descent = regular gradient descent
+
+## Advantage
+Regular gradient descent의 문제점은 fixed learning rate에 의존한다는 점이다. Loss function이 평평한 부분 (= gradient가 거의 0인 부분)에서는 improvement가 매우 느리다. 반면, natural gradient는 curvature (Fisher)의 역을 고려하기 때문에 평평한 지역에서 gradient의 크기가 더 커져 더 큰 step으로 이어진다. 따라서 regular GD보다 더 빠르게 잘 수렴한다. 
+
+## Drawback
+Natural gradient descent의 단점은 Fisher information matrix의 inverse가 필요하다는 점이다. 이 matrix의 크기는 free parameter의 수에 따라 변한다. N개의 parameter가 존재할 경우 N x N matrix의 inverse가 필요하다. 이를 극복하기 위해 Conjugate Gradients 또는 Kronecker-Factored Approximate Curvature (K-FAC)와 같은 근사 방법을 사용한다. 
 # In paper
 
 ## Natural Gradient Works Efficiently in Learning (1998)
@@ -307,11 +349,16 @@ The KL divergence is then locally quadratic, which means that the update rules o
 
 ## TRPO
 
-TRPO 논문에서 constrained optimization problem을 푸는 과정은 두 가지 단계로 나누어진다. 
+TRPO 논문에서 constrained optimization problem을 푸는 과정은 두 가지 단계로 나누어진다. 첫 번째 단계는 search direction을 찾는 과정이고, 두 번째 단계는 그 방향을 따라 line search를 수행하는 과정이다. 즉, 움직일 방향을 찾고 얼마나 움직일지를 결정하는 것이다.
 
-첫 번째 단계는 search direction을 찾는 과정이고, 두 번째 단계는 그 방향을 따라 line search를 수행하는 과정이다. 
+첫 번째 방향을 찾을 때, objective function의 linear approximation과 constraint의 quadratic approximation을 이용한다. 이때 constarint가 KL divergence이고, 위에서 언급한 것처럼 quadratic approximation이 가능하다. 근사화 후 Lagrangian multiplier를 적용하여 만든 unconstrained objective function은 $\Delta \theta$에 대한 이차식이다. 따라서 unique maximum을 갖고 미분하여 0이 되는 지점이 해가 된다:
+$$
+  \Delta \theta = {1\over\lambda}F(\theta_{old})^{-1}\nabla_\theta J_{\theta_{old}}(\theta)
+$$
+위 결과는 **natural gradient descent**와 동일하다! 즉, TRPO에서는 natural gradient descent를 사용한다. (Natural policy gradient 논문과 동일)
+> TRPO = natural policy gradient + linesearch + monotomic improvement theorem 
 
-
+한 가지 문제점은 Fisher information matrix의 inverse를 구하는 것인데, 여기서도 conjugate gradient algorithm을 이용하여 근사한다. 
 
 
 # 수학적 증명
