@@ -313,7 +313,7 @@ $$
   F(\theta)=\nabla^2D_{JS}(p(x;\theta)\mid\mid p(x;\theta + \Delta\theta))\mid_{\Delta\theta=0}
 $$
 
-이는 2차 미분에 대한 계산이 필요하고 매우 복잡하고 느리다 (특히 파라미터 수가 많을 때). 다행히도, 좀 더 간단한 버전이 존재한다. log-likelihood의 gradient들 간의 outer product에만 의존한다:   
+이는 2차 미분에 대한 계산이 필요하고 매우 복잡하고 느리다 (특히 파라미터 수가 많을 때). 다행히도, 좀 더 간단한 버전이 존재한다. 이 버전은 log-likelihood의 gradient들 간의 outer product에만 의존한다:   
 
 $$
   F(\theta)=\mathbb{E}_{x\sim p(x,\theta)}[\nabla log p(x;\theta)(\nabla log p(x;\theta))^T]
@@ -364,9 +364,11 @@ Natural gradient descent의 단점은 Fisher information matrix의 inverse가 �
 TRPO 논문에서 constrained optimization problem을 푸는 과정은 두 가지 단계로 나누어진다. 첫 번째 단계는 search direction을 찾는 과정이고, 두 번째 단계는 그 방향을 따라 line search를 수행하는 과정이다. 즉, 움직일 방향을 찾고 얼마나 움직일지를 결정하는 것이다.
 
 첫 번째 방향을 찾을 때, objective function의 linear approximation과 constraint의 quadratic approximation을 이용한다. 이때 constarint가 KL divergence이고, 위에서 언급한 것처럼 quadratic approximation이 가능하다. 근사화 후 Lagrangian multiplier를 적용하여 만든 unconstrained objective function은 $\Delta \theta$에 대한 이차식이다. 따라서 unique maximum을 갖고 미분하여 0이 되는 지점이 해가 된다:
+
 $$
   \Delta \theta = {1\over\lambda}F(\theta_{old})^{-1}\nabla_\theta J_{\theta_{old}}(\theta)
 $$
+
 위 결과는 **natural gradient descent**와 동일하다! 즉, TRPO에서는 natural gradient descent를 사용한다. (Natural policy gradient 논문과 동일)
 > TRPO = natural policy gradient + linesearch + monotomic improvement theorem 
 
