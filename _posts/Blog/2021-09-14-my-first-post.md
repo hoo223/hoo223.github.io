@@ -24,14 +24,6 @@ sitemap :
 * Ruby 설치 
     * Windows : [RubyInstaller](https://rubyinstaller.org/)
         * 3.0 버전 설치 시 오류 발생 -> 2.7 버전으로 설치
-    * Linux
-        ~~~
-        $ brew install ruby 
-        $ brew link --overwrite ruby
-        ~~~
-        * ruby 설치가 안된 경우 다음의 에러 발생
-            > An error occurred while installing http_parser.rb (0.6.0), and Bundler cannot continue.
-
 * [Ubuntu에 Jekyll 설치하기](https://velog.io/@ilcm96/install-jekyll-on-ubuntu)
 
 ***
