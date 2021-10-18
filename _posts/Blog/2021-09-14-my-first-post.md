@@ -11,7 +11,7 @@ toc: false
 toc_sticky: true
  
 date: 2021-09-14
-last_modified_at: 2021-09-19
+last_modified_at: 2021-10-18
 sitemap :
   changefreq : daily
   priority : 1.0
@@ -21,8 +21,17 @@ sitemap :
 ### Reference
 
 * 블로그 생성 : [왕초보를 위한 Github 블로그 만들기 (1)](https://zeddios.tistory.com/1222)      
-* Ruby 설치 (Windows) : [RubyInstaller](https://rubyinstaller.org/)
-    * 3.0 버전 설치 시 오류 발생 -> 2.7 버전으로 설치
+* Ruby 설치 
+    * Windows : [RubyInstaller](https://rubyinstaller.org/)
+        * 3.0 버전 설치 시 오류 발생 -> 2.7 버전으로 설치
+    * Linux
+        ~~~
+        $ brew install ruby 
+        $ brew link --overwrite ruby
+        ~~~
+        * ruby 설치가 안된 경우 다음의 에러 발생
+            > An error occurred while installing http_parser.rb (0.6.0), and Bundler cannot continue.
+
 * [Ubuntu에 Jekyll 설치하기](https://velog.io/@ilcm96/install-jekyll-on-ubuntu)
 
 ***
