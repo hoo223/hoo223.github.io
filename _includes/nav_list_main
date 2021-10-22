@@ -83,6 +83,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Ros" %}
+                        <li><a href="/categories/ros" class="">ROS ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "Mathematical-statistics" %}
                         <li><a href="/categories/mathematical-statistics" class="">Mathematical statistics ({{category[1].size}})</a></li>
                     {% endif %}
@@ -95,6 +102,7 @@
                     {% endif %}
                 {% endfor %}
             </ul>
+            
       </li>
       </li>
   </ul>
