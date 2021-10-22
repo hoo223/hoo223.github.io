@@ -20,14 +20,27 @@ sitemap :
 
 # Error description
 
-여러 컴퓨터에서 한 코드에 대한 작업을 하다보면 각 컴퓨터에서 작업한 내용을 원격 repository에 push하고 다른 컴퓨터에서 pull하여 작업을 이어나가게 된다. 
+로컬 repository에서 작업 후 원격 저장소로 push 할 때 다음과 같은 에러가 발생할 수 있다. 
 
-이때 pull하기 전에 local에서 코드를 먼저 수정하고 pull을 하게되면 원격과 충돌이 일어나면서 아래와 같은 에러가 발생한다. 
 ~~~
-error: Your local changes to the following files would be overwritten by merge:
+$ git push
+To https://github.com/user_name/user_name.github.io.git
+ ! [rejected]          master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/hoo223/hoo223.github.io.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ~~~
+
+내용을 보면, 로컬에는 없는 어떤 작업이 원격 저장소에 push 되어 서로 일치하지 않아서 update가 거부되었다고 한다. 
 
 # Solution
+이를 해결하기 위해서는 git pull을 통해 로컬을 원격과 같도록 업데이트 해준 후 push를 하면 된다. 
+
+그래서 git pull을 했 로컬에서 작업하던 코드들이 날아가는 경험을  
+
 ## git stash
 git stash 명령어를 이용하면 local의 변경 사항을 스택에 임시로 저장해 놓고 working directory를 초기화 할 수 있다. 
 
