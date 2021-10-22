@@ -39,57 +39,6 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 # Solution
 이를 해결하기 위해서는 git pull을 통해 로컬을 원격과 같도록 업데이트 해준 후 push를 하면 된다. 
 
-그래서 git pull을 했 로컬에서 작업하던 코드들이 날아가는 경험을  test
 
-## git stash
-git stash 명령어를 이용하면 local의 변경 사항을 스택에 임시로 저장해 놓고 working directory를 초기화 할 수 있다. 
-
-이 상태에서 git pull을 실행하면 에러 없이 정상적으로 동작하게 된다. 
-
-## git stash list      
-저장된 stash 목록은 다음과 같이 확인 가능하다.
-
-ex)
-~~~
-$ git stash list      
-stash@{0}: WIP on master: ffecd108 post update
-~~~
-
-## git stash apply
-저장된 작업을 다시 불러와 적용하고 싶다면
-~~~
-$ git stash apply -> 가장 최근의 stash를 불러옴
-~~~
-or      
-~~~
-$ git stash apply <stash 이름>
-~~~
-
-## git stash drop
-apply를 하더라도 스택에는 stash가 남아있다. stash를 스택에서 제거하고 싶다면
-> git stash drop -> 가장 최근의 stash를 제거
-
-or
-
-~~~
-git stash drop <stash 이름>
-~~~
-
-ex)
-~~~
-$ git stash drop      
-Dropped refs/stash@{0} (6d55cddbb418bd9c7fe23b95e2b7768440a582f2)
-~~~
-
-## git stash pop
-apply와 drop을 동시에 적용한다.
-
-# 활용 방안
-
-이 명령어는 local에서 진행하던 작업을 잠시 멈추고 다른 작업을 위해 branch를 변경해야 하는데 commit은 하기 싫은 경우 사용할 수 있다. 
-
-
-# Reference
-[[Git (6)] git pull 에러 해결방법 (Your local changes to the following files would be overwritten by merge)](https://goddaehee.tistory.com/253)
-
-[[Git] git stash 명령어 사용하기](https://gmlwjd9405.github.io/2018/05/18/git-stash.html)
+### Additional 
+그런데 git pull을 했을 때 로컬에서 하던 작업이 사라지는 현상을 겪었던거 같은데 정확히 어떤 상황에서 발생하는지 알 수 없었다. 같은 상황을 다시 겪게 된다면 추가적인 해결책을 작성해봐야 겠다. 
