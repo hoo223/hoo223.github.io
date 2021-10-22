@@ -39,7 +39,7 @@ hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 # Solution
 이를 해결하기 위해서는 git pull을 통해 로컬을 원격과 같도록 업데이트 해준 후 push를 하면 된다. 
 
-그래서 git pull을 했 로컬에서 작업하던 코드들이 날아가는 경험을  
+그래서 git pull을 했 로컬에서 작업하던 코드들이 날아가는 경험을  test
 
 ## git stash
 git stash 명령어를 이용하면 local의 변경 사항을 스택에 임시로 저장해 놓고 working directory를 초기화 할 수 있다. 
