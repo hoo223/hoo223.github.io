@@ -1,18 +1,18 @@
 ---
-title:  "Git push시 에러 발생 해결법 - error: failed to push some refs to ~"
+title:  "Git pull시 에러 발생 해결법 - error: Your local changes to the following files would be overwritten by merge"
 excerpt: ""
 
 categories:
   - Git
 tags:
-  - [git push error, git push 오류]
+  - [git pull error, git pull 오류]
 
 toc: false
 toc_sticky: true
 use_math: false
  
-date: 2021-10-22
-last_modified_at: 2021-10-22
+date: 2021-10-02
+last_modified_at: 2021-10-02
 sitemap :
   changefreq : daily
   priority : 1.0
