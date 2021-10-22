@@ -104,3 +104,11 @@ C-space의 position과 orientation의 non-Euclidean (i.e. non-"flat") 성질 때
 # 3.4 Wrenches
 
 # 3.5 Summary
+
+
+
+
+SO(3) : special orthogonal group
+so(3) : Lie algebra of the Lie group SO(3)
+SE(3) : special Euclidean group 
+se(3) : Lie algebra of the Lie group SE(3)
