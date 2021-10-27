@@ -97,6 +97,13 @@
             </ul>
             <ul>
                 {% for category in site.categories %}
+                    {% if category[0] == "Mac" %}
+                        <li><a href="/categories/mac" class="">Mac ({{category[1].size}})</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <ul>
+                {% for category in site.categories %}
                     {% if category[0] == "In-progress" %}
                         <li><a href="/categories/in-progress" class="">In-progress ({{category[1].size}})</a></li>
                     {% endif %}
