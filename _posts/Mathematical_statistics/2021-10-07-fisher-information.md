@@ -78,7 +78,7 @@ $$
 (3) $log\mathcal{N}(y_i\mid\mu,\sigma^2)$를 $\mu$에 대해 미분한 값 ${\partial \over \partial \mu}log\mathcal{N}(y_i\mid\mu,\sigma^2)$ (=(1)에서의 기울기) 그래프 = score function    
 (4) $\mu_0$에서 각 observation $y_i$에 대응하는 ${\partial \over \partial \mu}log\mathcal{N}(y_i\mid\mu,\sigma^2)$들의 분포 (density function)    
 
-* 일반적으로 log likelihood를 parameter로 미분한 값을 *score function*이라 부른다. (3)의 경우, socre functiion이 linear 함수이다. 
+* 일반적으로 log likelihood를 parameter로 미분한 값을 *score function*이라 부른다. (3)의 경우, score functiion이 linear 함수이다. 
 
 이제 $\mu_0$를 움직여보자.
 
@@ -93,7 +93,7 @@ $$
 
 모든 경우에 적용되는 중요한 관측은 바로 다음의 내용이다. 
 
-그 내용은 바로 우리가 true parameter value에서 socre function을 평가할 떄 (즉, $\mu_0=\mu^*$일 때), score들의 평균이 **0**이 된다는 것이다. (그림 4)
+그 내용은 바로 우리가 true parameter value에서 score function을 평가할 떄 (즉, $\mu_0=\mu^*$일 때), score들의 평균이 **0**이 된다는 것이다. (그림 4)
 
 ![4](https://user-images.githubusercontent.com/17296297/136661541-6a488bc4-6d57-4d41-a8f4-a19a943dfecb.png)
 
